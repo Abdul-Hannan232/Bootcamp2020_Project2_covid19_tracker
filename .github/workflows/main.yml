@@ -1,0 +1,33 @@
+name: Covid19 Tracker
+
+on:
+
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Install nodeJS
+        uses: actions/setup-node@v2-beta
+        with:
+          version: 14
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Create Build
+        run: npm run build
+        
+      - name: Install Surge
+        run: npm install -g surge
+        
+      - name: Deploy
+        run: surge ./build http://BootCamp2020_Project2_covid19_tracker_AbdulHannan.surge.sh --token ${{secrets.SURGE_TOKEN}}

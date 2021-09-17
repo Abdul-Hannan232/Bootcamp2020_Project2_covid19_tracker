@@ -16,7 +16,8 @@ import { Bar } from 'react-chartjs-2';
 // Country
 const useStylesCountry = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
+    // marginTop: theme.spacing(2),
     minWidth: 120,
   },
   selectEmpty: {
@@ -177,7 +178,7 @@ if(loading){
 
 
   return (
-    <div>
+    <div style={{textAlign: "center"}}>
 
     { countryName 
 
@@ -254,7 +255,7 @@ if(loading){
                 state === "Global" ? <Line data={lineData} options={lineOptions} />
                 : <Bar data={
                   {
-                    labels: ['Active', 'Recovered', 'Red'],
+                    labels: ['Active', 'Recovered', 'Deaths'],
                     datasets: [
                       {
                         label: 'Humans',
